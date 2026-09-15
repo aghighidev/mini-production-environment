@@ -10,7 +10,7 @@ WORKDIR /app
 COPY --from=builder /install /usr/local
 HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
   CMD python -c "import urllib.request; urllib.request.urlopen('http://localhost:5000/health')"
-RUN addgroup --system gdevops && adduser --system --gid gdevops devops
+RUN addgroup --system gdevops && adduser --system --ingroup gdevops devops
 COPY --chown=devops:gdevops . .
 USER devops:gdevops
 CMD ["python", "app.py"]

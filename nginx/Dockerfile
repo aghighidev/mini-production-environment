@@ -1,2 +1,2 @@
 FROM nginx:alpine
-RUN apk add --no-cache- curl
+RUN apk add curl
